@@ -1,0 +1,7 @@
+# Optional image build only (not a live deployment). Must provision secure persistent
+# model storage and a managed database before using Cloud Run for real workloads.
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'deploy/Dockerfile', '-t', 'us-docker.pkg.dev/$PROJECT_ID/merchantguard/api:$SHORT_SHA', '.']
+images:
+  - 'us-docker.pkg.dev/$PROJECT_ID/merchantguard/api:$SHORT_SHA'
